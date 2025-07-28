@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080" # Expose Spring Boot port for potential direct access/debugging
+    expose:
+      - "8080" # Expose internally for frontend to access
+    environment:
+      SPRING_PROFILES_ACTIVE: prod # Example, if you had different profiles
+    networks:
+      - app-network
+
+  frontend:
+    build:
+      context: ./frontend/dynamic-website-frontend # Path to your Angular project root
+      dockerfile: Dockerfile
+    ports:
+      - "80:80" # Map host port 80 to container port 80 (for Nginx)
+    depends_on:
+      - backend # Ensure backend starts before frontend
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
