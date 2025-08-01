@@ -1,6 +1,6 @@
 package com.example.dynamicwebsitebackend.controller;
 
-import com.example.dynamicwebsitebackend.logic.MusicAPIService;
+import com.example.dynamicwebsitebackend.service.MusicAPIService;
 import com.example.dynamicwebsitebackend.model.MusicAPIInfo;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
