@@ -18,7 +18,7 @@ export class AppComponent implements OnInit {
 
   fetchDynamicHtml(): void {
     // Note: Use 'backend' as the hostname because of Docker Compose service name
-    this.http.get('http://backend:8080/api/dynamic-html', { responseType: 'text' })
+    this.http.get('http://18.158.60.12/:8080/api/dynamic-html', { responseType: 'text' })
       .subscribe(
         (htmlString) => {
           this.dynamicHtmlContent = this.sanitizer.bypassSecurityTrustHtml(htmlString);
